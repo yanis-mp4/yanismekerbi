@@ -1,0 +1,430 @@
+/* ============================================================
+   MAIN STYLESHEET — 90s Movies Theme
+   Portfolio / Newsletter Website
+   ============================================================
+   HOW TO CUSTOMIZE:
+   - Change CSS variables in :root to retheme the whole site
+   - Fonts are loaded via Google Fonts in each HTML file
+   - All section comments explain what each block controls
+   ============================================================ */
+
+/* ── GOOGLE FONTS (loaded via @import as backup) ── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=VT323&family=Special+Elite&family=Oswald:wght@400;700&display=swap');
+
+/* ── CSS VARIABLES — Change these to retheme the whole site ── */
+:root {
+  /* Core palette — inspired by VHS, neon signs, popcorn & film grain */
+  --color-bg:           #0a0a0f;       /* Deep cinema black */
+  --color-surface:      #12121a;       /* Card/panel backgrounds */
+  --color-border:       #2a2a3d;       /* Subtle borders */
+
+  --color-neon-yellow:  #f5e642;       /* Main accent — marquee yellow */
+  --color-neon-red:     #e8003d;       /* Hot accent — danger/drama */
+  --color-neon-teal:    #00e5c8;       /* Cool accent — VHS glow */
+  --color-neon-orange:  #ff6b00;       /* Warm accent — film light */
+
+  --color-text-primary: #f0e8d0;       /* Warm off-white — like old paper */
+  --color-text-muted:   #7a7a9a;       /* Dimmed text */
+  --color-text-accent:  var(--color-neon-yellow);
+
+  /* Typography */
+  --font-display:       'Bebas Neue', sans-serif;    /* Big headings */
+  --font-mono:          'VT323', monospace;          /* Retro digital text */
+  --font-body:          'Special Elite', cursive;    /* Typewriter body text */
+  --font-ui:            'Oswald', sans-serif;        /* Nav & labels */
+
+  /* Spacing scale */
+  --space-xs:  0.4rem;
+  --space-sm:  0.8rem;
+  --space-md:  1.6rem;
+  --space-lg:  3.2rem;
+  --space-xl:  6.4rem;
+
+  /* Effects */
+  --glow-yellow:  0 0 10px #f5e64266, 0 0 30px #f5e64233;
+  --glow-red:     0 0 10px #e8003d66, 0 0 30px #e8003d33;
+  --glow-teal:    0 0 10px #00e5c866, 0 0 30px #00e5c833;
+  --scanline-opacity: 0.04;
+}
+
+/* ── RESET & BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Film grain overlay — applied via pseudo-element on body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: var(--scanline-opacity);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Scanline effect */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+img { display: block; max-width: 100%; }
+a  { color: var(--color-neon-teal); text-decoration: none; transition: all 0.2s; }
+a:hover { color: var(--color-neon-yellow); }
+
+/* ── FILM STRIP TOP BORDER ── */
+/* Creates the perforated film strip decoration at the very top */
+.film-strip-top {
+  width: 100%;
+  height: 28px;
+  background-color: #1a1a1a;
+  background-image:
+    radial-gradient(circle, var(--color-bg) 7px, transparent 7px);
+  background-size: 40px 28px;
+  background-position: 20px 50%;
+  border-bottom: 2px solid var(--color-neon-yellow);
+}
+
+/* ── NAVIGATION ── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.95);
+  border-bottom: 2px solid var(--color-neon-yellow);
+  backdrop-filter: blur(8px);
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 3px;
+  color: var(--color-neon-yellow);
+  text-shadow: var(--glow-yellow);
+  white-space: nowrap;
+}
+
+/* Blinking cursor effect on the logo */
+.nav-logo::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  font-size: 1.6rem;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-neon-yellow);
+  border-color: var(--color-neon-yellow);
+  text-shadow: var(--glow-yellow);
+  background: rgba(245, 230, 66, 0.06);
+}
+
+/* Hamburger menu (mobile) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--color-neon-yellow);
+  transition: all 0.3s;
+}
+
+/* ── PAGE WRAPPER ── */
+.page-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+/* ── SECTION TITLES ── */
+/* Use class="section-title" on any <h2> to get the decorated style */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-neon-yellow);
+  text-shadow: var(--glow-yellow);
+  margin-bottom: var(--space-xs);
+  line-height: 1;
+}
+
+.section-subtitle {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  letter-spacing: 2px;
+  margin-bottom: var(--space-lg);
+}
+
+/* Decorative rule under section headings */
+.section-rule {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-neon-yellow), var(--color-neon-red));
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--glow-yellow);
+}
+
+/* ── CARDS ── */
+/* Generic card — used for projects, newsletter entries, etc. */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-neon-yellow);
+  padding: var(--space-md);
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  /* VHS scan-line shimmer on hover */
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(transparent, rgba(245,230,66,0.04), transparent);
+  transition: top 0.5s ease;
+}
+
+.card:hover::before { top: 150%; }
+
+.card:hover {
+  border-left-color: var(--color-neon-teal);
+  box-shadow: var(--glow-teal);
+  transform: translateY(-3px);
+}
+
+.card-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-neon-teal);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.card-title {
+  font-family: var(--font-ui);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.card-desc {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-neon-yellow);
+  border-bottom: 1px solid currentColor;
+}
+
+.card-link:hover { color: var(--color-neon-red); }
+
+/* ── GRID LAYOUT (for cards) ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.7em 1.8em;
+  border: 2px solid var(--color-neon-yellow);
+  color: var(--color-neon-yellow);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-neon-yellow);
+  transform: translateX(-105%);
+  transition: transform 0.25s ease;
+  z-index: 0;
+}
+
+.btn:hover::before  { transform: translateX(0); }
+.btn:hover { color: var(--color-bg); }
+.btn span { position: relative; z-index: 1; }
+
+.btn-red {
+  border-color: var(--color-neon-red);
+  color: var(--color-neon-red);
+}
+.btn-red::before { background: var(--color-neon-red); }
+.btn-red:hover { color: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  letter-spacing: 1px;
+}
+
+.footer-copy span {
+  color: var(--color-neon-yellow);
+}
+
+/* Film strip bottom border */
+.film-strip-bottom {
+  width: 100%;
+  height: 28px;
+  background-color: #1a1a1a;
+  background-image:
+    radial-gradient(circle, var(--color-bg) 7px, transparent 7px);
+  background-size: 40px 28px;
+  background-position: 20px 50%;
+  border-top: 2px solid var(--color-neon-yellow);
+}
+
+/* ── TICKER / MARQUEE BAR ── */
+.ticker-bar {
+  background: var(--color-neon-yellow);
+  color: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 4px 0;
+}
+
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 28s linear infinite;
+}
+
+@keyframes ticker {
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(-100%); }
+}
+
+/* ── UTILITY CLASSES ── */
+.text-accent   { color: var(--color-neon-yellow); }
+.text-teal     { color: var(--color-neon-teal); }
+.text-red      { color: var(--color-neon-red); }
+.text-muted    { color: var(--color-text-muted); }
+.font-display  { font-family: var(--font-display); }
+.font-mono     { font-family: var(--font-mono); }
+.uppercase     { text-transform: uppercase; letter-spacing: 2px; }
+.mt-sm  { margin-top: var(--space-sm); }
+.mt-md  { margin-top: var(--space-md); }
+.mt-lg  { margin-top: var(--space-lg); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .navbar { padding: var(--space-sm) var(--space-md); }
+  .nav-links { display: none; flex-direction: column; width: 100%; }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .page-wrapper { padding: var(--space-md) var(--space-sm); }
+  footer { flex-direction: column; text-align: center; }
+}

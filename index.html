@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ══ CHANGE THIS: Page title shown in browser tab ══ -->
+  <title>YourName — Portfolio</title>
+
+  <!-- Google Fonts — 90s cinema typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=VT323&family=Special+Elite&family=Oswald:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <!-- ══ Nav & Footer are injected by components.js below ══ -->
+
+  <!-- ══════════════════════════════════════════════
+       HERO SECTION
+       Edit: your name, role, and bio paragraph.
+       Photo: put your PNG in images/profile.png and
+              replace the placeholder block with:
+              <img src="images/profile.png" alt="Your Name" />
+  ══════════════════════════════════════════════ -->
+  <main>
+    <div class="page-wrapper">
+
+      <!-- HERO -->
+      <section class="hero">
+
+        <!-- ── Left: Text ── -->
+        <div class="hero-text">
+          <p class="hero-eyebrow">▶ NOW PLAYING</p>
+
+          <!-- ══ CHANGE THIS: Your name ══ -->
+          <h1 class="hero-name">Yanis<br/>Mekerbi</h1>
+
+          <!-- ══ CHANGE THIS: Your role / tagline ══ -->
+          <p class="hero-role">Data Science | Digtal Marketing | Video Editing</p>
+
+          <!-- ══ CHANGE THIS: Short bio (2-3 sentences) ══ -->
+          <p class="hero-bio">
+            Hey, I'm Yanis Mekerbi, a Data Science and AI student that is passionate about
+            Digital Marketing, Video Editing and the use of advanced tools to help in promoting interesting ideas.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn"><span>View Projects</span></a>
+            <a href="contact.html" class="btn btn-red"><span>Say Hello</span></a>
+          </div>
+        </div>
+
+        <!-- ── Right: Photo ── -->
+        <div class="hero-photo-wrapper">
+          <div class="hero-photo-frame">
+            <div class="hero-photo">
+
+              <!--
+                ══ HOW TO ADD YOUR PHOTO ══
+                1. Save your PNG as:  images/profile.png
+                2. Delete the <div class="hero-photo-placeholder"> block below
+                3. Uncomment the <img> tag below (remove the <!-- and  -> markers)
+              -->
+
+              <!-- <img src="images/profile.png" alt="A photo of Your Name" /> -->
+
+              <!-- DELETE this placeholder block once you add your image -->
+              <!-- <div class="hero-photo-placeholder">
+                <span class="placeholder-icon">🎬</span>
+                <p>ADD YOUR<br/>PHOTO HERE</p>
+                <p style="font-size:0.85rem;margin-top:4px;">images/profile.png</p>
+              </div> -->
+
+              <img src="images/myface.jpg" alt="A photo of Yanis" />
+
+              <!-- VHS label at the bottom of the photo -->
+              <div class="vhs-label">Yanis Mekerbi</div>
+            </div>
+          </div>
+        </div>
+
+      </section><!-- /hero -->
+
+      <!-- ── QUICK STATS ── -->
+      <!-- ══ CHANGE THIS: Update numbers to reflect your real stats ══ -->
+      <div class="stats-row reveal">
+        <div class="stat-item">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Newsletter Issues</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Site Launched</div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════
+           PROJECTS SECTION
+           To add a project: copy one .card block
+           and fill in your own info.
+      ════════════════════════════════════ -->
+      <section id="projects" class="projects-section">
+
+        <div class="now-playing-badge">
+          <span class="dot-blink"></span>
+          Featured Projects
+        </div>
+
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">// WHAT I'VE BEEN BUILDING</p>
+        <div class="section-rule"></div>
+
+        <div class="grid-2">
+
+          <!-- ══ PROJECT CARD 1 ══
+               CHANGE: card-tag (category), card-title, card-desc, href
+          ══ -->
+          <article class="card reveal">
+            <span class="card-tag">Web Dev</span>
+            <h3 class="card-title">Computrized Maintenance Management System for SNTF</h3>
+            <p class="card-desc">
+              A CMMS implementation for the Caroubier, Algiers branch of SNTF.
+            </p>
+            <!-- Change href to your project URL or a page inside the site -->
+            <a href="https://github.com/yanis-mp4/SNTFCMMS.git" class="card-link">View Project →</a>
+          </article>
+
+          <!-- ══ PROJECT CARD 3 ══ -->
+          <article class="card reveal">
+            <span class="card-tag">Learning</span>
+            <h3 class="card-title">Learning Log</h3>
+            <p class="card-desc">
+              Check how far I've made it in my learning journey here.
+            </p>
+            <a href="newsletter.html" class="card-link">Read Notes →</a>
+          </article>
+
+          <!-- ══ PROJECT CARD 4 — "Coming Soon" placeholder ══ -->
+          <article class="card reveal" style="opacity:0.5; pointer-events:none;">
+            <span class="card-tag" style="color:var(--color-text-muted)">Coming Soon</span>
+            <h3 class="card-title" style="color:var(--color-text-muted)">??? Project</h3>
+            <p class="card-desc">
+              Something is brewing... Stay tuned.
+            </p>
+          </article>
+
+        </div><!-- /grid-2 -->
+      </section><!-- /projects -->
+
+      <!-- ── ABOUT TEASER ── -->
+      <!-- A short "about me" blurb. Edit the text below. -->
+      <section class="mt-lg reveal" style="max-width:680px;">
+        <h2 class="section-title" style="font-size:clamp(2rem,5vw,3.5rem);">About Me</h2>
+        <div class="section-rule"></div>
+        <!-- ══ CHANGE THIS: Longer about-me paragraph ══ -->
+        <p>
+          I'm based in <span class="text-accent">Algiers, Algeria</span> and I study at <a href="https://www.enp.edu.dz/en/">National Polytechnic School</a>. 
+          I am absolutely passionate about tech
+          and I try to constantly expand my knowledge, especially in the AI and Machine Learning fields.
+          I also want to share my knowledge and experience through engaging content, which is why
+          I focus so much on Video Editing and Marketing.
+          <br>
+          You can learn more about my learning journey in my <a href="newsletter.html">newsletter!</a>
+        </p>
+        <p class="mt-md">
+          <a href="contact.html" class="btn"><span>Get In Touch</span></a>
+        </p>
+      </section>
+
+    </div><!-- /page-wrapper -->
+  </main>
+
+  <!-- Scripts — keep at the bottom of <body> -->
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

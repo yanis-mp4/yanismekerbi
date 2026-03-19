@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ══ CHANGE THIS: Page title ══ -->
+  <title>Newsletter — YourName</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=VT323&family=Special+Elite&family=Oswald:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <!-- Nav injected by components.js -->
+
+  <main>
+    <div class="page-wrapper">
+
+      <!-- ── PAGE HEADER ── -->
+      <div class="newsletter-hero">
+        <p class="hero-eyebrow">▶ DISPATCHES FROM THE TRENCHES</p>
+        <h1 class="section-title">The Learning<br/>Journal</h1>
+        <!-- ══ CHANGE THIS: A short description of what your newsletter is about ══ -->
+        <p class="section-subtitle">
+          // RAW NOTES, DISCOVERIES &amp; LESSONS FROM MY JOURNEY
+        </p>
+        <div class="section-rule"></div>
+        <p style="max-width:580px; color:var(--color-text-muted);">
+          This is where I share and document everything I learn - Be it a new AI model I've made, a cool
+          video editing trick I learned, or information that I think some would find useful.
+        </p>
+      </div>
+
+      <!-- ════════════════════════════════════
+           FILTER BAR
+           To add a new topic filter:
+             1. Add a <button data-filter="yourtopic">
+             2. Add data-tag="yourtopic" to relevant .entry-card elements
+           ════════════════════════════════════ -->
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="career">Data Science & AI</button>
+        <button class="filter-btn" data-filter="webdev">Web Dev</button>
+        <button class="filter-btn" data-filter="design">Video Editing & Motion Graphcs</button>
+        <button class="filter-btn" data-filter="learning">For Fun</button>
+      </div>
+
+      <!-- ════════════════════════════════════
+           NEWSLETTER ENTRIES
+           ──────────────────────────────────
+           HOW TO ADD A NEW ENTRY:
+             1. Copy the entire <article class="entry-card"> block below
+             2. Paste it ABOVE the existing entries (newest first)
+             3. Update:
+                - data-tag          → topic filter (webdev/design/career/learning)
+                - entry-date        → publication date
+                - entry-number      → issue number (e.g. #005)
+                - entry-tag class   → tag-webdev / tag-design / tag-career / tag-learning
+                - entry-tag text    → visible label
+                - entry-title       → the entry headline
+                - entry-excerpt     → one-line summary (shown when collapsed)
+                - entry-body        → the full content (shown when expanded)
+           ════════════════════════════════════ -->
+
+      <article class="entry-card reveal" data-tag="webdev">
+        <div class="entry-meta">
+          <span class="entry-date">2026 · JAN · 15</span>
+          <span class="entry-number">#001</span>
+          <span class="entry-tag tag-webdev">Web Dev</span>
+        </div>
+        <h2 class="entry-title">Computerized Maintenance Management System for SNTF</h2>
+        <p class="entry-excerpt">
+          I spent my 15 days internship at SNTF making a CMMS for SNTF, which includes Data Management functionalities...
+        </p>
+
+        <!-- Full content — click the card to expand -->
+        <div class="entry-body">
+          <p>
+            I managed to implement the first parts of a Computerized Maintenance Management System while I was having a 
+            15 days internship at SNTF.
+          </p>
+
+          <h3>What I Made:</h3>
+          <p>
+            • A fully functional web interface using php, javascript, HTML/CSS <br/>
+            • An interface for managing Curative Maintenance of SNTF Stadler flirts between multiple agents
+          </p>
+
+          <p style="margin-top:1.2rem; color:var(--color-text-muted); font-size:0.9rem;">
+            📚 GitHub Repository:
+            <a href="https://github.com/yanis-mp4/SNTFCMMS.git" target="_blank" rel="noopener noreferrer">
+              Computerized Maintenance Management System | SNTF
+            </a>
+          </p>
+        </div>
+      </article>
+
+      <!-- ── SUBSCRIBE BOX ── -->
+      <div class="subscribe-box reveal">
+        <h3>Subscribe</h3>
+        <!-- ══ CHANGE THIS: your subscribe call-to-action ══ -->
+        <p>Get new entries delivered to your inbox. No spam — just honest notes.</p>
+        <div class="subscribe-form">
+          <input
+            class="subscribe-input"
+            type="email"
+            placeholder="your@email.com"
+            aria-label="Email address"
+          />
+          <button class="btn subscribe-btn"><span>Subscribe</span></button>
+        </div>
+      </div>
+
+    </div><!-- /page-wrapper -->
+  </main>
+
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
